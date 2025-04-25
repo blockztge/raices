@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Raices - Agencia de Turismo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: black !important;
+            padding: 0 20px;
+            transition: all 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.9) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 5px 20px;
+        }
+        .navbar.scrolled .navbar-logo {
+            height: 70px; /* Reduce un poco el tamaño */
+        }
+        
+        .navbar-brand {
+            padding: 5px 0;
+        }
+        
+        .navbar-logo {
+            height: 100px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .navbar-nav .nav-link {
+            color: white !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            font-weight: 500;
+            padding: 8px 15px;
+            margin: 0 5px;
+            position: relative;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #FFDB58 !important;
+        }
+        
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            width: calc(100% - 30px);
+            height: 2px;
+            background: #FFDB58;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+        .navbar-brand-text {
+            font-family: 'lobster', cursive !important;
+            font-size: 40px;
+            color: white !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+           line-height: 1;
+            margin-bottom: 0;
+        }
+        
+        .navbar-brand-subtext {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: white !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            letter-spacing: 1.5px;
+            margin-top: -4px;
+            text-align: center;
+        }
+        .form-select {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-select:focus {
+            border-color: #145214;
+            box-shadow: 0 0 0 2px rgba(34, 139, 34, 0.2);
+        }
+
+        #servicios .card {
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .about-section img {
+            width: 300px!important;
+            height: 300px !important;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Estilos para el menú móvil */
+        @media (max-width: 991.98px) {
+               /* Contenedor flexible para logo + botón */
+            .navbar .container {
+            display: flex;
+            align-items: center;
+            padding: 0 10px; /* Reduce el padding lateral */
+            }
+
+            .navbar-collapse .navbar-brand {
+                margin-left: 15px;
+                display: flex;
+                flex-direction: column; /* Apila logo y texto verticalmente */
+                align-items: center; /* Centra horizontalmente */
+                padding: 10px 0 !important;
+                text-align: center; /* Asegura centrado del texto */
+            }
+        
+            /* Espacio entre logo y texto principal */
+            .navbar-collapse .navbar-brand-text {
+                margin-top: 5px !important; /* Reduce este valor para menos espacio */
+                margin-bottom: 0;
+                font-size: 24px !important;
+            }
+        
+            /* Espacio entre texto principal y subtítulo */
+            .navbar-collapse .navbar-brand-subtext {
+                margin-top: -3px !important; /* Junta más el subtítulo */
+                font-size: 10px !important;
+            }
+        
+            /* Tamaño del logo en el menú */
+            .navbar-collapse .navbar-logo {
+                height: 50px !important; /* Ajusta según necesites */
+                width: auto;
+                margin-right: 0;
+                margin-bottom: -10px !important;
+            }
+
+            .navbar-collapse .navbar-brand-text,
+            .navbar-collapse .navbar-brand-subtext {
+                padding-right: 10px; /* Desplaza solo el texto */
+            }
+
+             /* Muestra el logo al final del menú desplegable */
+            .navbar-collapse::after {
+                content: '';
+                display: flex;
+                justify-content: center;
+                padding: 15px 0;
+                margin-top: 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Clona el logo usando JavaScript (alternativa más limpia) */
+            .navbar-collapse .cloned-logo {
+                display: none; /* Oculto por defecto */
+            }
+
+            .navbar-collapse.show .cloned-logo {
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 20px;
+            }
+
+            .navbar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: rgba(0, 0, 0, 0.9) !important;
+                padding: 8px 10px;
+            }
+            .navbar-logo {
+                height: 70px !important; /* Tamaño reducido */
+                width: auto;
+                margin-right: 8px;
+            }
+            
+            .navbar-toggler {
+                padding: 6px 8px;
+                margin-right: 5px;
+            }
+            .navbar-brand {
+                margin-left: 0;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        
+            /* Reduce el tamaño del texto del logo en móvil */
+            .navbar-brand-text {
+                font-size: 30px !important;
+               line-height: 1;
+               margin-bottom: 0;
+            }
+        
+            .navbar-brand-subtext {
+                font-size: 12px !important;
+                letter-spacing: 1.2px;
+                margin-top: -2px;
+                line-height: 1;
+            }
+            
+            .navbar-collapse {
+                position: fixed;
+                top: 0;
+                left: -280px; /* Lo ocultamos fuera de la pantalla */
+                width: 280px;
+                height: 100vh;
+                background-color:rgba(30, 50, 29, 0.9) !important;
+                padding: 60px 20px 20px;
+                margin-top: 0;
+                transition: transform 0.3s ease-in-out;
+                z-index: 1050;
+                overflow-y: auto;
+            }
+            
+            .navbar-collapse.show {
+                transform: translateX(280px); /* Lo deslizamos hacia la derecha */
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .navbar-nav {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .navbar-nav .nav-item {
+                margin: 0;
+            }
+            
+            .navbar-nav .nav-link {
+                color: white !important;
+                padding: 12px 15px;
+                margin: 5px 0;
+                font-size: 16px;
+                letter-spacing: 1px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .navbar-nav .nav-link:hover {
+                color: #FFDB58 !important;
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+            
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
+            
+            .close-menu-btn {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                color: white;
+                font-size: 24px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                z-index: 1060;
+            }
+
+
+
+            .carousel-caption {
+                width: 60%;
+                padding: 0 8%;
+            }
+            .caption-title {
+                font-size: 2rem;
+            
+            }
+            .caption-subtitle {
+                font-size: 1.3rem;
+            }
+          
+            .caption-logo:not(.small-logo) {
+                max-width: 120px;
+            }
+            .small-logo {
+                max-width: 80px !important;
+            }
+        }
+
+        .btn-primary {
+            background-color: #FFDB58;
+            border-color: #FFDB58;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #e0c34d;
+            border-color: #e0c34d;
+            transform: scale(1.05);
+        }
+
+        /* ------------------------- */
+        /* ESTILOS DEL CARRUSEL PRINCIPAL */
+        /* ------------------------- */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        /* Contenedor principal del carrusel */
+        #mainCarousel {
+            height: 100%;
+        }
+
+        /* Contenedor interno del carrusel */
+        #mainCarousel .carousel-inner {
+            height: 100%;
+        }
+
+        /* Cada slide del carrusel */
+        #mainCarousel .carousel-item {
+            height: 100%;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        /* Imágenes del carrusel */
+        #mainCarousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: none !important;
+        }
+
+        /* Controles del carrusel */
+        #mainCarousel .carousel-control-prev,
+        #mainCarousel .carousel-control-next {
+            width: 8%;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        #mainCarousel .carousel-control-prev:hover,
+        #mainCarousel .carousel-control-next:hover {
+            opacity: 1;
+        }
+
+        #mainCarousel .carousel-control-prev-icon,
+        #mainCarousel .carousel-control-next-icon {
+            width: 3rem;
+            height: 3rem;
+            background-size: 100% 100%;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Indicadores del carrusel */
+        #mainCarousel .carousel-indicators {
+            bottom: 20px;
+        }
+
+        #mainCarousel .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        #mainCarousel .carousel-indicators button.active {
+            background-color: #FFDB58;
+        }
+
+
+
+
+
+        /* Ajustes para móviles */
+        @media (max-width: 767.98px) {
+            .hero-section {
+                height: 70vh;
+                min-height: 400px;
+            }
+             #mainCarousel .carousel-item img {
+    object-position: center center;
+  }
+  
+            #mainCarousel .carousel-control-prev,
+            #mainCarousel .carousel-control-next {
+                width: 15%;
+            }
+            
+            #mainCarousel .carousel-control-prev-icon,
+            #mainCarousel .carousel-control-next-icon {
+                width: 2rem;
+                height: 2rem;
+            }
+
+            .caption-container {
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                padding: 15px !important;
+            }
+            .carousel-caption {
+                position: relative;
+                bottom: auto;
+                padding-top: 20px;
+                width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                text-align: center !important;
+                align-items: center !important;
+                background: rgba(0,0,0,0.7); /* Fondo sólido para mejor legibilidad */
+                padding: 15px !important;
+            }
+            .caption-title,
+            .caption-subtitle {
+                text-align: center !important;
+                width: 100% !important;
+            }
+            .carousel-caption .btn {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            .caption-logo:not(.small-logo) {
+                max-width: 100px;
+                margin-bottom: 10px;
+            }
+            .small-logo {
+                max-width: 60px !important;
+                margin-bottom: 5px !important;
+            }
+            .btn-lg {
+                padding: 8px 16px;
+                font-size: 1rem;
+            }
+
+            .carousel-item img {
+                object-fit: contain;
+                height: auto;
+                max-height: 100vh;
+                /*object-position: center center;*/
+
+            }
+
+            .carousel-slide img {
+                height: 400px;
+              }
+              
+              .slide-caption {
+                max-width: 80%;
+                left: 5%;
+              }
+              
+              .slide-caption h3 {
+                font-size: 2rem;
+              }
+              
+              .slide-caption p {
+                font-size: 1.1rem;
+              }
+        
+        }
+
+
+
+        @media (max-width: 575.98px) {
+            .carousel-caption {
+                padding: 10px !important;
+            }
+            .caption-title {
+                font-size: 4rem !important;
+            }
+            .caption-subtitle {
+                font-size: 1.1rem !important;
+            }
+            
+            
+            .caption-logo:not(.small-logo) {
+                max-width: 80px;
+            }
+            .small-logo {
+                max-width: 50px !important;
+            }
+
+
+
+
+            .carousel-slide img {
+                height: 300px;
+              }
+              
+              .slide-caption h3 {
+                font-size: 1.5rem;
+              }
+              
+              .slide-caption p {
+                font-size: 1rem;
+              }
+              
+              .carousel-control {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+              }
+              .carousel-item img {
+                height: 100%;
+                min-height: 300px;
+              }
+        }
+
+        /* ------------------------- */
+        /* RESTO DE ESTILOS */
+        /* ------------------------- */
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card img {
+            border-radius: 10px 10px 0 0;
+        }
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #145214 ;
+        }
+        .footer {
+            background-color:rgba(30, 50, 29, 0.9);
+            color: white;
+            padding: 40px 0;
+        }
+        .footer h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #FFDB58;
+        }
+        
+        .footer ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer .social-links a {
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .footer .social-links a:hover {
+            color: #FFDB58 !important;
+            transform: translateY(-3px);
+        }
+        .footer a {
+            color: #FFDB58;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .about-section {
+            background-color: white;
+            padding: 60px 0;
+        }
+        .about-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #145214;
+            font-weight: 600;
+        }
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .trips-section {
+            background-color: white;
+            padding: 60px 0;
+        }
+        .trips-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #145214;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+        .trip-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .trip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .trip-card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #145214;
+            font-weight: 600;
+        }
+        .trip-card p {
+            font-size: 1rem;
+            color: #555;
+        }
+        .trip-card .price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #E1AD01;
+        }
+        .contact-section {
+            background-color: white;
+            padding: 60px 0;
+        }
+        .contact-section h2 {
+            font-family: 'Poppins', sans-serif;
+            color: #145214;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .contact-section p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .contact-section .form-control {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .contact-section .form-control:focus {
+            border-color: #145214 ;
+            box-shadow: 0 0 0 2px rgba(34, 139, 34, 0.2);
+        }
+        .contact-section .btn-primary {
+            background-color: #FFDB58;
+            border-color: #FFDB58;
+            color: #333;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .contact-section .btn-primary:hover {
+            background-color: #D4A017;
+            border-color: #D4A017;
+            transform: scale(1.05);
+        }
+       
+        .card-img-top {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Hamburguesa personalizada - 3 líneas gruesas */
+        .navbar-toggler-icon {
+            background-image: none !important; /* Elimina el icono SVG por defecto */
+            position: relative;
+            width: 24px;
+            height: 18px;
+        }
+
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after,
+        .navbar-toggler-icon span.middle-line {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 3px; /* Grosor de las líneas (cambia este valor) */
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-toggler-icon::before {
+            top: 0;
+        }
+
+        .navbar-toggler-icon::after {
+            bottom: 0;
+        }
+
+        .navbar-toggler-icon span.middle-line {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Estilos para el segundo carrusel */
+        #carruselDestinos {
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #carruselDestinos .carousel-item {
+            transition: transform 0.6s ease-in-out;
+        }
+
+        #carruselDestinos .carousel-caption {
+            bottom: 20%;
+            left: 10%;
+            right: 10%;
+            padding: 20px;
+        }
+
+        #carruselDestinos .carousel-indicators button {
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50%;
+            margin: 0 5px !important;
+        }
+
+        #carruselDestinos .carousel-item img {
+            transition: transform 0.3s;
+        }
+        
+        #carruselDestinos .carousel-item:hover img {
+            transform: scale(1.02);
+        }
+
+
+
+
+
+
+
+
+        .carousel-caption .caption-logo,
+.logo-top-right {
+    display: none !important;
+}
+
+
+        /* Estilos para el texto superpuesto */
+        .carousel-caption {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: auto;
+            bottom: 0;
+            width: 50%; /* Ocupa la mitad izquierda */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+            padding: 0 5%;
+            background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .caption-container {
+            max-width: 100%;
+            padding: 30px;
+            margin: 0;
+        }
+
+.caption-logo {
+    max-width: 150px; /* Reduje el tamaño base */
+    height: auto;
+    margin-bottom: 15px; /* Menos espacio debajo del logo */
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+    transition: all 0.3s ease; /* Para animación suave al cambiar tamaño */
+}
+.small-logo {
+    max-width: 100px !important; /* Tamaño más pequeño forzado */
+    margin-bottom: 10px !important;
+}
+
+.caption-title {
+    font-size: 6rem;
+    margin-bottom: 15px;
+    text-align: left;
+    font-family: 'lobster', cursive !important;
+}
+
+.caption-subtitle {
+    font-size:30px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.carousel-caption .btn {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para el carrusel minimalista */
+.minimal-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0;
+    padding: 0;
+  }
+  
+  .minimal-carousel-track {
+   display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+    padding: 5px 0;
+  }
+  
+  .minimal-carousel-slide {
+    width: 280px;
+    margin-right: 30px;
+    position: relative;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  
+  .minimal-carousel-slide:hover {
+    transform: scale(1.03);
+  }
+  
+  .minimal-carousel-slide img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .minimal-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  .minimal-caption h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .minimal-caption p {
+    margin: 3px 0 0;
+    font-size: 0.8rem;
+    opacity: 0.9;
+  }
+  
+  /* Animación de desplazamiento */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-280px * 3 - 30px * 3));
+    }
+  }
+  
+  /* Pausar animación al hacer hover */
+  /*.minimal-carousel-container:hover .minimal-carousel-track {
+    animation-play-state: paused;
+  }*/
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .minimal-carousel-slide {
+      width: 220px;
+      margin-right: 20px;
+    }
+    
+    .minimal-carousel-slide img {
+      height: 180px;
+    }
+    
+    @keyframes scroll {
+      100% {
+        transform: translateX(calc(-220px * 3 - 20px * 3));
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .minimal-carousel-slide {
+      width: 250px;
+      margin-right: 15px;
+    }
+    
+    .minimal-carousel-slide img {
+      height: 180px;
+    }
+    
+    .minimal-caption h4 {
+      font-size: 0.9rem;
+    }
+    
+    .minimal-caption p {
+      font-size: 0.7rem;
+    }
+    
+    @keyframes scroll {
+      100% {
+        transform: translateX(calc(-180px * 3 - 15px * 3));
+      }
+    }
+  }
+
+
+
+
+
+
+
+  /* Estilos para la sección de aerolíneas */
+  .airlines-section {
+    overflow: hidden;
+    position: relative;
+}
+
+.airlines-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.airlines-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+   padding: 20px 0;
+}
+
+.airline-logo {
+    width: 180px;
+    height: 80px;
+    margin: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-height: 100px;
+    max-width: 100px;
+}
+
+.airline-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+   
+}
+
+.airline-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pausar animación al hacer hover */
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <!-- Botón hamburguesa + Logo + Texto (alineados) -->
+            <div class="d-flex align-items-center">
+                <!-- Botón hamburguesa -->
+                <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon">
+                        <span class="middle-line"></span>
+                    </span>
+                </button>
+                
+                <!-- Logo con texto -->
+                <a class="navbar-brand d-flex align-items-center py-0" href="#">
+                    <img src="img/intento3.png" alt="Raices Turismo" class="navbar-logo me-2">
+                    <div>
+                        <div class="navbar-brand-text">Raices</div>
+                        <div class="navbar-brand-subtext">Turismo</div>
+                    </div>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <button class="close-menu-btn d-lg-none" type="button" aria-label="Close menu">
+                    &times;
+                </button>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quienes-somos">Quiénes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#proximas-salidas">Próximas Salidas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalFAQ">Preguntas Frecuentes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+   <!-- Hero Section con Carrusel -->
+   <section class="hero-section">
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <img src="img/proximo.png" class="d-block w-100" alt="Playa de Copacabana">
+                <div class="carousel-caption">
+                    <div class="caption-container">
+                        <img src="img/Raices.png" alt="Raíces Turismo" class="caption-logo small-logo">
+                        <h2 class="caption-title">Puglia, Campania + Andalucia</h2>
+                        <p class="caption-subtitle">9 de Septiembre</p>
+                        
+                        <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20contacto%20desde%20el%20sitio%20web%20oficial" class="btn btn-warning btn-lg mt-3" target="_blank" style="font-weight: bold;">Consultar</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="carousel-item">
+                <img src="img/orlando.jpg" class="d-block w-100" alt="Playa de Copacabana">
+                <div class="carousel-caption">
+                    <div class="caption-container">
+                        <img src="img/Raices.png" alt="Raíces Turismo" class="caption-logo small-logo">
+                        <h2 class="caption-title">Orlando</h2>
+                        <p class="caption-subtitle">Parques Temáticos de Orlando</p>
+                        
+                        <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20contacto%20desde%20el%20sitio%20web%20oficial" class="btn btn-warning btn-lg mt-3" target="_blank" style="font-weight: bold;">Consultar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <img src="img/roma.png" class="d-block w-100" alt="Parques de Orlando">
+                <div class="carousel-caption">
+                    <div class="caption-container">
+                        <img src="img/Raices.png" alt="Raíces Turismo" class="caption-logo small-logo">
+                        <h2 class="caption-title">Roma</h2>
+                        <p class="caption-subtitle">Viaja en el Tiempo en la Ciudad Eterna</p>
+                        
+                        <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20contacto%20desde%20el%20sitio%20web%20oficial" class="btn btn-warning btn-lg mt-3" target="_blank" style="font-weight: bold;">Consultar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <img src="img/copacabana.png" class="d-block w-100" alt="Parques de Orlando">
+                <div class="carousel-caption">
+                    <div class="caption-container">
+                        <img src="img/Raices.png" alt="Raíces Turismo" class="caption-logo small-logo">
+                        <h2 class="caption-title">Copacabana</h2>
+                        <p class="caption-subtitle">Sol, Playa y Energia Inigualable</p>
+                        
+                        <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20contacto%20desde%20el%20sitio%20web%20oficial" class="btn btn-warning btn-lg mt-3" target="_blank" style="font-weight: bold;">Consultar</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="carousel-item">
+                <img src="img/cruzero.png" class="d-block w-100" alt="Parques de Orlando">
+                <div class="carousel-caption">
+                    <div class="caption-container">
+                        <img src="img/Raices.png" alt="Raíces Turismo" class="caption-logo small-logo">
+                        <h2 class="caption-title">Paquetes Crucero</h2>
+                        <p class="caption-subtitle">Relax y Aventura en Alta Mar</p>
+                        
+                        <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20contacto%20desde%20el%20sitio%20web%20oficial" class="btn btn-warning btn-lg mt-3" target="_blank" style="font-weight: bold;">Consultar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <img src="img/ushuaia.png" class="d-block w-100" alt="Parques de Orlando">
+                <div class="carousel-caption">
+                    <div class="caption-container">
+                        <img src="img/Raices.png" alt="Raíces Turismo" class="caption-logo small-logo">
+                        <h2 class="caption-title">Ushuaia</h2>
+                        <p class="caption-subtitle">Donde la Aventura<br> Toca el Fin del Mundo</p>
+                        
+                        <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20contacto%20desde%20el%20sitio%20web%20oficial" class="btn btn-warning btn-lg mt-3" target="_blank" style="font-weight: bold;">Consultar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</section>
+
+    <!-- Quiénes Somos Section -->
+    <section id="quienes-somos" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center">
+                    <img src="img/juan2.jpg" class="img-fluid" alt="Dueño de Racices">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-center mb-5">Quiénes Somos</h2>
+                    <p class="animate__animated animate__fadeInRight" style="text-align: justify;">
+                        En <strong>Raices Turismo</strong>, llevamos más de <strong>30 años</strong> ofreciendo experiencias únicas y memorables a nuestros clientes. Todo comenzó con la pasión de nuestro fundador, <strong>Juan Carlos Schaffer</strong>, por explorar el mundo y compartir su amor por los viajes.
+                    </p>
+                    <p class="animate__animated animate__fadeInRight" style="text-align: justify;">
+                        Lo que nos distingue es nuestro enfoque personalizado. No solo organizamos viajes, sino que también acompañamos a nuestros clientes en cada paso del camino. De hecho, <strong>Juan</strong>, es quien guía personalmente muchos de los viajes, asegurándose de que cada experiencia sea inolvidable.
+                    </p>
+                    <p class="animate__animated animate__fadeInRight" style="text-align: justify;">
+                        Con <strong>Raices Turismo</strong>, no solo viajas; vivís historias, creas recuerdos y descubrís el mundo de la mano de expertos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="container my-5">
+        <h2 class="text-center mb-5" style="color: #145214;">Nuestros Servicios</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInLeft">
+                    <img src="img/turistico4.png" class="card-img-top" alt="Paquetes Turísticos">
+                    <div class="card-body">
+                        <h5 class="card-title">Paquetes Turísticos</h5>
+                        <p class="card-text">Diseñamos paquetes a medida para que disfrutes al máximo tu viaje.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInUp">
+                    <img src="img/excursiones1.png" class="card-img-top" alt="Excursiones Guiadas">
+                    <div class="card-body">
+                        <h5 class="card-title">Excursiones Guiadas</h5>
+                        <p class="card-text">Explora con nuestros guías expertos los lugares más increíbles.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInUp">
+                    <img src="img/rural.png" class="card-img-top" alt="Turismo Rural">
+                    <div class="card-body">
+                        <h5 class="card-title">Turismo Rural</h5>
+                        <p class="card-text">Vivi experiencias auténticas en entornos naturales. Alojamientos rurales, gastronomia local y mas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInUp">
+                    <img src="img/antartico.png" class="card-img-top" alt="Excursiones Guiadas">
+                    <div class="card-body">
+                        <h5 class="card-title">Avistamientos Antarticos</h5>
+                        <p class="card-text">Explora con nuestros guías expertos los lugares más increíbles.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInRight">
+                    <img src="img/alojamiento1.png" class="card-img-top" alt="Alojamiento Exclusivo">
+                    <div class="card-body">
+                        <h5 class="card-title">Alojamiento Exclusivo</h5>
+                        <p class="card-text">Disfruta de alojamientos únicos en los mejores lugares.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card animate__animated animate__fadeInUp">
+                    <img src="img/turistico.png" class="card-img-top" alt="Paquetes Personalizados">
+                    <div class="card-body">
+                        <h5 class="card-title">Paquetes Personalizados</h5>
+                        <p class="card-text">Creamos viajes únicos adaptados a tus necesidades y preferencias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<div class="container">
+    <div class="minimal-carousel-container">
+        <div class="minimal-carousel-track">
+          <!-- Imágenes del carrusel -->
+          <div class="minimal-carousel-slide">
+            <img src="img/madrid.png" alt="Madrid">
+            <div class="minimal-caption">
+              <h4>Madrid, España</h4>
+              <p>El Arte Late en las Calles</p>
+            </div>
+          </div>
+          <div class="minimal-carousel-slide">
+            <img src="img/napoles.png" alt="Napoles">
+            <div class="minimal-caption">
+              <h4>Napoles</h4>
+              <p>Atardecer en el Golfo</p>
+            </div>
+          </div>
+          <div class="minimal-carousel-slide">
+            <img src="img/galapagos.png" alt="Galápagos">
+            <div class="minimal-caption">
+              <h4>Islas Galápagos</h4>
+              <p>Naturaleza única</p>
+            </div>
+          </div>
+          <!-- Duplicamos las imágenes para efecto infinito -->
+          <div class="minimal-carousel-slide">
+            <img src="img/bariloche.png" alt="Patagonia">
+            <div class="minimal-caption">
+              <h4>Patagonia Argentina</h4>
+              <p>Vive la aventura</p>
+            </div>
+          </div>
+          <div class="minimal-carousel-slide">
+            <img src="img/machupichu.png" alt="Machu Picchu">
+            <div class="minimal-caption">
+              <h4>Machu Picchu</h4>
+              <p>Ciudad perdida</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <!-- Próximas Salidas Section -->
+    <section id="proximas-salidas" class="trips-section">
+        <div class="container">
+            <h2 class="text-center">Próximas Salidas</h2>
+            <div class="row">
+                <!-- Viaje 1 -->
+                <div class="col-md-4">
+                    <div class="trip-card">
+                        <h3>Patagonia Argentina</h3><br>
+                        <p><strong>Fecha:</strong> Consultar Fecha</p>
+                        <p><strong>Duración:</strong> ...</p>
+                        <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20interesa%20el%20viaje%20a%20Islas%20Galápagos.%20¿Podrían%20enviarme%20más%20información%20sobre%20fechas%20y%20itinerario?" class="btn btn-primary" 
+                        target="_blank">
+                        Consultar</a>
+                        <!---<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPatagonia">
+                            Más Información
+                        </button>--->
+                    </div>
+                </div>
+                <!-- Viaje 2 -->
+                <div class="col-md-4">
+                    <div class="trip-card">
+                        <h3>Puglia, Campania + Andalucia</h3>
+                        <p><strong>Fecha:</strong> 9 de Septiembre, 2025</p>
+                        <p><strong>Duración:</strong> 14 días</p>
+                        
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalItaliaAndalucia">
+                            Más Información
+                        </button>
+                    </div>
+                </div>
+                <!-- Viaje 3 -->
+                <div class="col-md-4">
+                    <div class="trip-card">
+                        <h3>Islas Galápagos, Ecuador</h3><br>
+                        <p><strong>Fecha:</strong> Consultar Fecha</p>
+                        <p><strong>Duración:</strong> ...</p>
+                        <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20interesa%20el%20viaje%20a%20Islas%20Galápagos.%20¿Podrían%20enviarme%20más%20información%20sobre%20fechas%20y%20itinerario?" class="btn btn-primary" 
+            target="_blank">
+            Consultar</a>
+                        <!---<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalGalapagos">
+                            Más Información
+                        </button>--->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="airlines-section" style="background-color: #f8f9fa;">
+        <div class="container">
+           <!-- <h2 class="text-center mb-4" style="color: #145214;">Aerolíneas con las que trabajamos</h2> -->
+            <div class="airlines-slider">
+                <div class="airlines-track">
+                    <!-- Logos de aerolíneas - puedes agregar más según necesites -->
+                    <div class="airline-logo">
+                        <img src="img/areolina.png" alt="Aerolíneas Argentinas">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/latam.png" alt="LATAM Airlines">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/american.png" alt="American Airlines">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/iberia.png" alt="iberia Airlines">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/emirates.png" alt="Emirates">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/france.png" alt="Air France">
+                    </div>
+                    <!-- Duplicamos los logos para efecto continuo -->
+                    <div class="airline-logo">
+                        <img src="img/areolina.png" alt="Aerolíneas Argentinas">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/latam.png" alt="LATAM Airlines">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/american.png" alt="American Airlines">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/jet.png" alt="Delta Airlines">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/emirates.png" alt="Emirates">
+                    </div>
+                    <div class="airline-logo">
+                        <img src="img/france.png" alt="Air France">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- Modales para Más Información -->
+    <!-- Modal Patagonia -->
+    <div class="modal fade" id="modalPatagonia" tabindex="-1" aria-labelledby="modalPatagoniaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalPatagoniaLabel">Patagonia Argentina</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Días y Excursiones:</strong></p>
+                    <ul>
+                        <li>Día 1: Llegada a El Calafate y visita al Glaciar Perito Moreno.</li>
+                        <li>Día 2: Trekking en el Parque Nacional Los Glaciares.</li>
+                        <li>Día 3: Navegación por el Lago Argentino.</li>
+                        <li>Día 4: Visita a El Chaltén y trekking al Cerro Fitz Roy.</li>
+                        <li>Día 5: Día libre para explorar.</li>
+                        <li>Día 6: Regreso a El Calafate.</li>
+                        <li>Día 7: Vuelo de regreso.</li>
+                    </ul>
+                    <p><strong>Lugares que se visitan:</strong></p>
+                    <ul>
+                        <li>Glaciar Perito Moreno.</li>
+                        <li>Parque Nacional Los Glaciares.</li>
+                        <li>El Chaltén y Cerro Fitz Roy.</li>
+                    </ul>
+                    <p><strong>Hotel:</strong> Hotel Mirador del Lago (4 estrellas).</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20contacto%20desde%20el%20sitio%20web%20oficial"class="btn btn-primary" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Machu Picchu -->
+    <div class="modal fade" id="modalItaliaAndalucia" tabindex="-1" aria-labelledby="modalItaliaAndaluciaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalItaliaAndaluciaLabel">Bellezas de Puglia y Campania + Andalucía</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Dias y Excursiones:</strong></p>
+                    <ul>
+                        <li><strong>9-9:</strong> Vuelo BUE-ROMA.</li>
+                        <li><strong>10-9:</strong> Arribo a Roma y traslado al hotel. Noche pre-tour.</li>
+                        <li><strong>11-9:</strong> Día libre en Roma.</li>
+                        <li><strong>12-9:</strong> Roma → Abadía San Giovanni in Venere → Termoli → Bari.</li>
+                        <li><strong>13-9:</strong> Bari → Brindisi → Lecce → Gallipoli → Brindisi.</li>
+                        <li><strong>14-9:</strong> Brindisi → Alberobello (Trulli) → Matera (Sassi) → Nápoles.</li>
+                        <li><strong>15-9:</strong> Nápoles → Isla de Capri → Sorrento → Salerno.</li>
+                        <li><strong>16-9:</strong> Salerno → Pompeya → Nápoles → Cassino → Roma.</li>
+                        <li><strong>17-9:</strong> Vuelo Roma-Madrid. Día libre en Madrid.</li>
+                        <li><strong>19-9:</strong> Madrid → Granada (visita Alhambra).</li>
+                        <li><strong>20-9:</strong> Granada → Málaga → Marbella → Ronda → Sevilla.</li>
+                        <li><strong>21-9:</strong> Sevilla (visita panorámica + paseo en barco).</li>
+                        <li><strong>22-9:</strong> Sevilla → Córdoba → Consuegra → Madrid.</li>
+                        <li><strong>23-9:</strong> Vuelo Madrid-Buenos Aires.</li>
+                    </ul>
+    
+                    <p><strong>Lugares Destacados:</strong></p>
+                    <ul>
+                        <li><strong>Italia:</strong> Roma, Abadía San Giovanni, Trulli de Alberobello, Sassi di Matera, Pompeya, Capri.</li>
+                        <li><strong>Andalucía:</strong> Alhambra de Granada, Costa del Sol, Ronda, Mezquita de Córdoba.</li>
+                    </ul>
+    
+                    <p><strong>Precio:</strong> USD 5900 por persona (base doble, impuestos incluidos).</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20interesa%20el%20paquete%20%22Bellezas%20de%20Puglia%20y%20Campania%20%2B%20Andalucía%22" class="btn btn-primary" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Galápagos -->
+    <div class="modal fade" id="modalGalapagos" tabindex="-1" aria-labelledby="modalGalapagosLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalGalapagosLabel">Islas Galápagos, Ecuador</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Días y Excursiones:</strong></p>
+                    <ul>
+                        <li>Día 1: Llegada a Baltra y traslado a Puerto Ayora.</li>
+                        <li>Día 2: Visita a la Estación Científica Charles Darwin.</li>
+                        <li>Día 3: Excursión a la Isla Seymour Norte.</li>
+                        <li>Día 4: Snorkeling en la Isla Bartolomé.</li>
+                        <li>Día 5: Visita a la Isla Isabela.</li>
+                        <li>Día 6: Día libre para explorar.</li>
+                        <li>Día 7: Regreso a Baltra y vuelo de regreso.</li>
+                    </ul>
+                    <p><strong>Lugares que se visitan:</strong></p>
+                    <ul>
+                        <li>Estación Científica Charles Darwin.</li>
+                        <li>Isla Seymour Norte.</li>
+                        <li>Isla Bartolomé.</li>
+                        <li>Isla Isabela.</li>
+                    </ul>
+                    <p><strong>Hotel:</strong> Hotel Finch Bay (4 estrellas).</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Me%20contacto%20desde%20el%20sitio%20web%20oficial%20%0A%0AMe%20encantaría%20conocer%20mas%20sobre%20el%20paquete%20turistico%20de%20Islas%20Galapagos%20Ecuador" class="btn btn-primary" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal FAQ -->
+    <div class="modal fade" id="modalFAQ" tabindex="-1" aria-labelledby="modalFAQLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalFAQLabel">Preguntas Frecuentes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="accordion" id="faqAccordion">
+                        <!-- Pregunta 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    ¿Cuáles son los métodos de pago aceptados?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Aceptamos pagos con tarjetas de crédito (Visa, MasterCard, American Express), transferencias bancarias y efectivo en nuestras oficinas.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pregunta 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    ¿Cuál es la política de cancelación?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Las cancelaciones con más de 30 días de anticipación tienen un reembolso del 90%. Entre 15 y 30 días, 50% de reembolso. Menos de 15 días no aplica reembolso.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pregunta 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    ¿Incluyen seguro de viaje?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Todos nuestros paquetes internacionales incluyen seguro básico de viaje. Puedes contratar coberturas adicionales si lo deseas.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pregunta 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    ¿Necesito visa para los destinos internacionales?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Los requisitos de visa varían según el destino y tu nacionalidad. Te asesoraremos sobre los trámites necesarios al momento de contratar el viaje.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <a href="https://wa.me/541128457948?text=¡Hola%20Raices!%20Tengo%20una%20pregunta%20sobre%20sus%20servicios" class="btn btn-primary" target="_blank">Consultar por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <h2 class="text-center">¿Necesitas un paquete personalizado?</h2>
+            <p class="text-center mb-4">Déjanos tus datos y nos pondremos en contacto contigo para crear el viaje de tus sueños.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form action="https://formsubmit.co/montenegro.gustavo.ariel@gmail.com" method="POST">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" name="telefono" 
+                                   pattern="[0-9+]{8,20}" 
+                                   title="Ingresa solo números y el signo + (ej: +541147920368)" 
+                                   placeholder="Ej: +54 11 4792-0368" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Tu correo electrónico" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="personas" class="form-label">Número de personas</label>
+                            <select class="form-select" id="personas" name="personas" required>
+                                <option value="" selected disabled>Seleccione cantidad</option>
+                                <option value="1">1 persona</option>
+                                <option value="2">2 personas</option>
+                                <option value="3">3 personas</option>
+                                <option value="4">4 personas</option>
+                                <option value="5">5 personas</option>
+                                <option value="6">6 personas</option>
+                                <option value="7+">Más de 6 personas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="destino" class="form-label">Destino de interés</label>
+                            <select class="form-select" id="destino" name="destino" required>
+                                <option value="" selected disabled>Seleccione un destino</option>
+                                <option value="Patagonia Argentina">Patagonia Argentina</option>
+                                <option value="Machu Picchu, Perú">Machu Picchu, Perú</option>
+                                <option value="Islas Galápagos, Ecuador">Islas Galápagos, Ecuador</option>
+                                <option value="Bariloche, Argentina">Bariloche, Argentina</option>
+                                <option value="Cancún, México">Cancún, México</option>
+                                <option value="Roma, Italia">Roma, Italia</option>
+                                <option value="Napoles, Italia">Napoles, Italia</option>
+                                <option value="Punta Cana, República Dominicana">Punta Cana, República Dominicana</option>
+                                <option value="Río de Janeiro, Brasil">Río de Janeiro, Brasil</option>
+                                <option value="Otro">Otro destino (especificar en mensaje)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="5" 
+                                      placeholder="Cuéntanos sobre tu viaje ideal, fechas estimadas y cualquier requerimiento especial" required></textarea>
+                        </div>
+                        
+                        <input type="hidden" name="_next" value="https://tudominio.com/gracias.html">
+                        <input type="hidden" name="_template" value="table">
+                        <button type="submit" class="btn btn-primary w-100">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Ubicación</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> <a href="https://www.google.com/maps/search/?api=1&query=Av.+Santa+Fe+2183+Martinez+Buenos+Aires" target="_blank" style="color: white;">Av. Santa Fe 2183, Martinez, Buenos aires.</a></li>
+                        <li>1° Piso Oficina B (1640)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i><a href="tel:+541147920368" style="color: white;"> 4792-0368</a></li>
+                        <li><i class="fas fa-envelope me-2"></i> <a href="mailto:Raicesturismo@fibertel.com.ar" style="color: white;">Raicesturismo@fibertel.com.ar </a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Redes Sociales</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <p class="mt-3">© 2025 Raices - Agencia de Turismo</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    // Efecto de navbar al hacer scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Asegurar que el navbar tenga la clase scrolled si la página se carga con scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.scrollY > 50) {
+            document.querySelector('.navbar').classList.add('scrolled');
+        }
+    });
+
+    // Cerrar menú móvil al hacer clic en un enlace
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            }
+        });
+    });
+
+    // Validación de formulario
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const telefono = document.getElementById('telefono').value;
+        if (telefono && !/^[+\d\s\-\(\)]{8,}$/.test(telefono)) {
+            alert('Por favor ingresa un teléfono válido');
+            e.preventDefault();
+        }
+    });
+
+    // Manejar el botón de cerrar menú
+    document.querySelector('.close-menu-btn').addEventListener('click', function() {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        navbarCollapse.classList.remove('show');
+    });
+
+    // Clonar logo para menú móvil
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        const originalLogo = document.querySelector('.navbar-brand');
+        
+        // Clona el logo al cargar la página
+        const clonedLogo = originalLogo.cloneNode(true);
+        clonedLogo.classList.add('cloned-logo', 'd-lg-none');
+        navbarCollapse.appendChild(clonedLogo);
+    });
+
+    // Inicialización del carrusel principal
+    document.addEventListener('DOMContentLoaded', function() {
+        // Configuración del carrusel principal
+        var mainCarousel = new bootstrap.Carousel(document.getElementById('mainCarousel'), {
+            interval: 5000, // Cambia cada 5 segundos
+            pause: 'hover', // Pausa al pasar el mouse
+            wrap: true, // Loop infinito
+            touch: true // Soporte para touch en móviles
+        });
+        
+        // Ajustar altura de imágenes en el carrusel
+        function adjustCarouselHeight() {
+            const carousel = document.querySelector('#mainCarousel');
+            const carouselInner = document.querySelector('#mainCarousel .carousel-inner');
+            const carouselItems = document.querySelectorAll('#mainCarousel .carousel-item');
+            
+            // Establecer altura basada en el viewport
+            const viewportHeight = window.innerHeight;
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
+            const carouselHeight = viewportHeight - navbarHeight;
+            
+            carousel.style.height = carouselHeight + 'px';
+            carouselInner.style.height = '100%';
+            
+            carouselItems.forEach(item => {
+                item.style.height = '100%';
+                const img = item.querySelector('img');
+                if (img) {
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                }
+            });
+        }
+        
+        // Ejecutar al cargar y al redimensionar
+        adjustCarouselHeight();
+        window.addEventListener('resize', adjustCarouselHeight);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.horizontal-carousel');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        
+        // Configuración del desplazamiento automático
+        let interval = setInterval(nextSlide, 5000); // Cambia cada 5 segundos
+        
+        function updateCarousel() {
+          carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+          
+          // Actualiza indicadores
+          indicators.forEach((indicator, index) => {
+            if (index === currentIndex) {
+              indicator.classList.add('active');
+            } else {
+              indicator.classList.remove('active');
+            }
+          });
+          
+          // Reinicia el intervalo
+          clearInterval(interval);
+          interval = setInterval(nextSlide, 5000);
+        }
+        
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % totalSlides;
+          updateCarousel();
+        }
+        
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+          updateCarousel();
+        }
+        
+        // Event listeners para controles
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        
+        // Event listeners para indicadores
+        indicators.forEach((indicator, index) => {
+          indicator.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+          });
+        });
+        
+        // Pausar al hacer hover
+        carousel.addEventListener('mouseenter', () => {
+          clearInterval(interval);
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+          clearInterval(interval);
+          interval = setInterval(nextSlide, 5000);
+        });
+        
+        // Inicializar
+        updateCarousel();
+      });
+
+
+
+
+
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const container = document.querySelector('.minimal-carousel-container');
+        const track = document.querySelector('.minimal-carousel-track');
+        const slides = document.querySelectorAll('.minimal-carousel-slide');
+        const slideWidth = slides[0].offsetWidth;
+        const marginRight = parseInt(window.getComputedStyle(slides[0]).marginRight);
+        const totalWidth = slideWidth + marginRight;
+        let currentPosition = 0;
+        let animationId;
+        let isPaused = false;
+        const speed = 1.0; // Ajusta para más lento (menor número) o rápido (mayor número)
+      
+        // Duplicar slides para efecto infinito
+        const originalSlides = Array.from(slides);
+        originalSlides.forEach(slide => {
+          const clone = slide.cloneNode(true);
+          track.appendChild(clone);
+        });
+      
+        function animate() {
+          if (isPaused) return;
+          
+          currentPosition -= speed;
+          const maxScroll = originalSlides.length * totalWidth;
+          
+          // Reiniciar posición cuando llegamos al final
+          if (currentPosition <= -maxScroll) {
+            currentPosition = 0;
+          }
+          
+          track.style.transform = `translateX(${currentPosition}px)`;
+          animationId = requestAnimationFrame(animate);
+        }
+      
+        // Pausar al hacer hover
+        container.addEventListener('mouseenter', () => {
+          isPaused = true;
+        });
+      
+        container.addEventListener('mouseleave', () => {
+          isPaused = false;
+          animate();
+        });
+      
+        // Iniciar animación
+        animate();
+      
+        // Limpiar al salir de la página
+        window.addEventListener('beforeunload', () => {
+          cancelAnimationFrame(animationId);
+        });
+      
+        // Redimensionar ventana
+        window.addEventListener('resize', () => {
+          const newSlideWidth = slides[0].offsetWidth;
+          const newMarginRight = parseInt(window.getComputedStyle(slides[0]).marginRight);
+          const scaleFactor = (newSlideWidth + newMarginRight) / totalWidth;
+          currentPosition = currentPosition * scaleFactor;
+        });
+      });
+
+
+
+
+
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const track = document.querySelector('.airlines-track');
+        const logos = document.querySelectorAll('.airline-logo');
+        
+        // Duplicar logos para efecto infinito
+        logos.forEach(logo => {
+            const clone = logo.cloneNode(true);
+            track.appendChild(clone);
+        });
+        
+        // Ajustar velocidad según necesidad
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .airlines-track {
+                animation-duration: 60s; /* Más lento */
+            }
+        `;
+        document.head.appendChild(style);
+    });
+    </script>
+</body>
+</html>
